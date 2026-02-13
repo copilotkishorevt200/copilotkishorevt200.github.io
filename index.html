@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freakers Fashion | Unleash the Freaker Within</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            purple: '#d946ef',
+                            green: '#39ff14',
+                            black: '#050505'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Syncopate', 'sans-serif'],
+                        body: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'glitch': 'glitch 1s linear infinite',
+                    },
+                    keyframes: {
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Syncopate', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .neon-text-purple {
+            color: #d946ef;
+            text-shadow: 0 0 10px rgba(217, 70, 239, 0.5);
+        }
+
+        .neon-text-green {
+            color: #39ff14;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .neon-border {
+            border: 1px solid rgba(217, 70, 239, 0.3);
+            box-shadow: 0 0 15px rgba(217, 70, 239, 0.1);
+        }
+
+        .neon-border:hover {
+            border-color: #d946ef;
+            box-shadow: 0 0 20px rgba(217, 70, 239, 0.4);
+        }
+
+        .monitor-scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% {
+                bottom: 100%;
+            }
+
+            100% {
+                bottom: -100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden relative">
+
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-50 mix-blend-overlay opacity-20"
+        style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold neon-text-purple tracking-tighter">FREAKERS</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-bold tracking-widest">
+                <a href="#shop" class="hover:text-neon-purple transition">SHOP</a>
+                <a href="#about" class="hover:text-neon-purple transition">ABOUT</a>
+                <a href="#contact" class="hover:text-neon-purple transition">CONTACT</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="admin.html"
+                    class="text-gray-400 hover:text-white transition text-xs uppercase tracking-widest hidden md:block">Admin</a>
+                <a href="https://wa.me/1234567890" target="_blank"
+                    class="bg-neon-green text-black px-4 py-2 text-xs font-bold uppercase tracking-wider hover:bg-white transition">
+                    WhatsApp
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-black/95 border-b border-white/10 backdrop-blur-xl">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#shop"
+                    class="mobile-link text-lg font-bold tracking-widest hover:text-neon-purple transition">SHOP</a>
+                <a href="#about"
+                    class="mobile-link text-lg font-bold tracking-widest hover:text-neon-purple transition">ABOUT</a>
+                <a href="#contact"
+                    class="mobile-link text-lg font-bold tracking-widest hover:text-neon-purple transition">CONTACT</a>
+                <a href="admin.html"
+                    class="mobile-link text-sm text-gray-500 hover:text-white transition uppercase tracking-widest py-2">Admin
+                    Panel</a>
+                <a href="https://wa.me/1234567890" target="_blank"
+                    class="bg-neon-green text-black px-6 py-3 font-bold uppercase tracking-wider hover:bg-white transition mx-auto inline-block">
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?auto=format&fit=crop&q=80"
+                alt="Cyberpunk Fashion" class="w-full h-full object-cover opacity-60 grayscale contrast-125">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/50"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl">
+            <h1 class="text-5xl md:text-8xl font-bold mb-6 leading-none neon-text-purple mix-blend-screen">
+                UNLEASH THE<br>FREAKER WITHIN
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 tracking-widest uppercase font-light px-4">
+                Cyberpunk Streetwear due 2026
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center px-6">
+                <a href="#shop"
+                    class="bg-neon-purple text-black px-8 py-4 font-bold uppercase tracking-widest hover:bg-white hover:scale-105 transition duration-300 shadow-[0_0_20px_rgba(217,70,239,0.5)]">
+                    Shop Collection
+                </a>
+                <a href="#contact"
+                    class="border border-neon-green text-neon-green px-8 py-4 font-bold uppercase tracking-widest hover:bg-neon-green hover:text-black transition duration-300">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Shop Section -->
+    <section id="shop" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-b border-white/10 pb-6">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-2 text-white">The Drop</h2>
+                <div class="h-1 w-24 bg-neon-green"></div>
+            </div>
+
+            <div id="categoryFilters" class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+                <!-- Dynamic Filters Injected Here -->
+            </div>
+        </div>
+
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Products injected via JS -->
+            <div class="col-span-full text-center py-20 text-gray-600 animate-pulse">
+                INITIALIZING PRODUCT DATABASE...
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-zinc-900/50 border-y border-white/5 relative overflow-hidden">
+        <div class="monitor-scanline"></div>
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative group">
+                <div
+                    class="absolute -inset-2 bg-gradient-to-r from-neon-purple to-neon-green rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200">
+                </div>
+                <img src="https://images.unsplash.com/photo-1615873968403-89e061852ba4?auto=format&fit=crop&q=80"
+                    alt="About Us"
+                    class="relative rounded-lg grayscale hover:grayscale-0 transition duration-500 shadow-2xl">
+            </div>
+
+            <div>
+                <h2 class="text-4xl font-bold mb-8 neon-text-green">The Glitch in the Matrix</h2>
+                <p class="text-gray-400 leading-relaxed mb-6 font-light text-lg">
+                    Freakers Fashion isn't just clothing; it's a signal broadcast to the outliers. Born in the
+                    neon-soaked backalleys of the digital age, we design for the rebels, the hackers, and the
+                    night-crawlers.
+                </p>
+                <p class="text-gray-400 leading-relaxed mb-8 font-light text-lg">
+                    We reject the minimal. We embrace the chaotic. Our pieces are armor for the modern dystopia.
+                </p>
+                <div class="grid grid-cols-2 gap-8 text-center">
+                    <div class="p-6 border border-white/10 rounded-lg hover:border-neon-purple transition">
+                        <h4 class="text-3xl font-bold text-white mb-2">100%</h4>
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Secure WhatsApp Order</p>
+                    </div>
+                    <div class="p-6 border border-white/10 rounded-lg hover:border-neon-purple transition">
+                        <h4 class="text-3xl font-bold text-white mb-2">24/7</h4>
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Support Online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <section id="contact" class="py-24 px-6 text-center max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to Join the Resistance?</h2>
+        <p class="text-gray-400 mb-12 text-lg">Orders, collaborations, or just want to talk tech? Slide into our DMs.
+        </p>
+
+        <a href="https://wa.me/1234567890"
+            class="inline-flex items-center gap-3 bg-neon-green text-black px-10 py-5 font-bold text-lg uppercase tracking-widest hover:bg-white hover:scale-105 transition duration-300 rounded mb-16">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            </svg>
+            Order Now
+        </a>
+
+        <div class="flex justify-center space-x-8 text-gray-500 text-sm tracking-widest uppercase">
+            <a href="#" class="hover:text-neon-purple transition">Instagram</a>
+            <a href="#" class="hover:text-neon-purple transition">TikTok</a>
+            <a href="#" class="hover:text-neon-purple transition">Legal</a>
+        </div>
+
+        <p class="mt-12 text-xs text-zinc-800">
+            &copy; 2026 FREAKERS FASHION. ALL RIGHTS RESERVED.
+        </p>
+    </section>
+
+    <script>
+        const API = '/api/products';
+        const PHONE_NUMBER = '1234567890'; // Replace with real number
+
+        let allProducts = [];
+
+        async function init() {
+            try {
+                const res = await fetch(API);
+                allProducts = await res.json();
+                renderFilters(allProducts);
+                renderProductGrid(allProducts);
+            } catch (err) {
+                console.error('Failed to load products', err);
+                document.getElementById('productGrid').innerHTML = '<p class="text-red-500 text-center col-span-full">SYSTEM ERROR: CONNECTION REFUSED</p>';
+            }
+        }
+
+        function renderProductGrid(products) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="group relative bg-zinc-900 border border-white/5 overflow-hidden transition duration-500 hover:border-neon-purple neon-border">
+                    <div class="relative h-96 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 z-10"></div>
+                        <img src="${p.images[0]}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        
+                        <div class="absolute bottom-0 left-0 w-full p-4 z-20 flex justify-between items-end transform translate-y-2 group-hover:translate-y-0 transition duration-300">
+                            <div>
+                                <p class="text-neon-purple text-xs font-bold uppercase tracking-widest mb-1">${p.category}</p>
+                                <h3 class="text-xl font-bold text-white uppercase leading-none">${p.name}</h3>
+                            </div>
+                            <span class="text-xl font-bold text-white">$${p.price}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 bg-zinc-950 border-t border-white/10 group-hover:bg-neon-purple/10 transition duration-300">
+                         <a href="https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(`Hi Freakers Fashion, I want to order the ${p.name} ($${p.price}).`)}" 
+                           target="_blank"
+                           class="block w-full text-center border border-white/20 text-white py-3 font-bold uppercase tracking-widest hover:bg-neon-purple hover:border-neon-purple hover:text-black transition duration-300">
+                            Buy via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderFilters(products) {
+            const categories = ['all', ...new Set(products.map(p => p.category))];
+            const container = document.getElementById('categoryFilters');
+
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterProducts('${cat}')"
+                    class="text-sm uppercase tracking-wider hover:text-neon-purple transition ${cat === 'all' ? 'text-neon-purple' : 'text-gray-500'} whitespace-nowrap"
+                    data-category="${cat}">
+                    ${cat === 'all' ? 'All' : cat}
+                </button>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            // Update Active State
+            document.querySelectorAll('#categoryFilters button').forEach(btn => {
+                const btnCat = btn.getAttribute('data-category');
+                if (btnCat === category) {
+                    btn.classList.remove('text-gray-500');
+                    btn.classList.add('text-neon-purple');
+                } else {
+                    btn.classList.add('text-gray-500');
+                    btn.classList.remove('text-neon-purple');
+                }
+            });
+
+            if (category === 'all') {
+                renderProductGrid(allProducts);
+            } else {
+                renderProductGrid(allProducts.filter(p => p.category === category));
+            }
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Run
+        init();
+    </script>
+</body>
+
+</html>

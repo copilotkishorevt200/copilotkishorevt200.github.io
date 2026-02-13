@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freakers Admin | Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --background: #0a0a0a;
+            --foreground: #ffffff;
+            --accent: #d946ef;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cyber-btn {
+            transition: all 0.3s ease;
+        }
+
+        .cyber-btn:hover {
+            box-shadow: 0 0 15px rgba(217, 70, 239, 0.5);
+            text-shadow: 0 0 5px #fff;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen p-6">
+    <div class="w-full max-w-md bg-zinc-900 border border-white/10 p-8 rounded-lg shadow-2xl">
+        <h1 class="text-3xl font-bold text-center mb-8 uppercase tracking-widest font-['Oswald']">
+            System <span class="text-purple-500">Access</span>
+        </h1>
+
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Username</label>
+                <input type="text" id="username" required
+                    class="w-full bg-black border border-white/20 p-4 focus:border-purple-500 outline-none transition rounded-sm text-white">
+            </div>
+
+            <div>
+                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Password</label>
+                <input type="password" id="password" required
+                    class="w-full bg-black border border-white/20 p-4 focus:border-purple-500 outline-none transition rounded-sm text-white">
+            </div>
+
+            <button type="submit"
+                class="cyber-btn w-full bg-purple-600 text-white p-4 font-bold uppercase tracking-widest hover:bg-purple-500 transition rounded-sm">
+                Authenticate
+            </button>
+        </form>
+
+        <p id="errorMsg" class="mt-4 text-red-500 text-center text-sm hidden"></p>
+
+        <div class="mt-8 text-center text-xs text-gray-600">
+            <a href="index.html" class="hover:text-white transition">← Return to Store</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorMsg.classList.add('hidden');
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (res.ok) {
+                    window.location.href = 'admin.html';
+                } else {
+                    const data = await res.json();
+                    throw new Error(data.message || 'Login failed');
+                }
+            } catch (err) {
+                errorMsg.textContent = err.message;
+                errorMsg.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html>
