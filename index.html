@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Bikers Cafe | Salem's Ultimate Superbike Hub & Gear Specialist</title>
+  <meta name="description"
+    content="Salem's premier destination for high-end pre-owned superbikes, specialist riding gear, and expert motorcycle maintenance. Est. 2016." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-background text-foreground antialiased font-body relative">
+
+  <!-- ================= OVERLAYS ================= -->
+  <!-- Mimicking the global background setup from index.css -->
+  <div
+    class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(circle_at_50%_0%,hsl(0_0%_10%)_0%,transparent_75%)]">
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b flex items-center bg-transparent border-transparent h-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      <div class="flex items-center justify-between h-full">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="/" class="flex items-center gap-3 sm:gap-4 group">
+            <div
+              class="w-10 h-10 sm:w-12 sm:h-12 bg-primary clip-skew flex items-center justify-center text-primary-foreground font-display font-black text-xl sm:text-2xl group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(255,102,0,0.4)] relative">
+              BC
+            </div>
+            <div class="flex flex-col justify-center">
+              <span
+                class="font-display font-black text-xl sm:text-2xl md:text-3xl tracking-tighter leading-none text-white group-hover:text-primary transition-colors uppercase">
+                BIKERS CAFE
+              </span>
+              <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] text-primary font-bold mt-0.5 sm:mt-1">
+                Salem • Est. 2016
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center h-full">
+          <div class="flex items-center space-x-10 h-full">
+            <a href="#home"
+              class="font-display text-sm uppercase tracking-[0.2em] font-bold text-gray-300 hover:text-primary transition-all duration-300 relative group py-2">
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,102,0,0.8)]"></span>
+            </a>
+            <a href="#services"
+              class="font-display text-sm uppercase tracking-[0.2em] font-bold text-gray-300 hover:text-primary transition-all duration-300 relative group py-2">
+              Services
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,102,0,0.8)]"></span>
+            </a>
+            <a href="#inventory"
+              class="font-display text-sm uppercase tracking-[0.2em] font-bold text-gray-300 hover:text-primary transition-all duration-300 relative group py-2">
+              Inventory
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,102,0,0.8)]"></span>
+            </a>
+            <a href="#contact"
+              class="font-display text-sm uppercase tracking-[0.2em] font-bold text-gray-300 hover:text-primary transition-all duration-300 relative group py-2">
+              Contact
+              <span
+                class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,102,0,0.8)]"></span>
+            </a>
+            <button
+              class="bg-primary text-primary-foreground hover:bg-white hover:text-black font-display font-black text-xs h-12 px-8 uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_20px_rgba(255,102,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] ml-4"
+              onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+              Inquire Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="p-2 text-muted-foreground hover:text-primary transition-colors">
+            <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+            <i data-lucide="x" id="close-icon" class="w-7 h-7 hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-background border-b border-border absolute top-full w-full">
+      <div class="px-4 pt-2 pb-6 space-y-2">
+        <a href="#home"
+          class="mobile-link block px-3 py-3 font-display text-xl text-foreground hover:text-primary border-b border-border/50">Home</a>
+        <a href="#services"
+          class="mobile-link block px-3 py-3 font-display text-xl text-foreground hover:text-primary border-b border-border/50">Services</a>
+        <a href="#inventory"
+          class="mobile-link block px-3 py-3 font-display text-xl text-foreground hover:text-primary border-b border-border/50">Inventory</a>
+        <a href="#contact"
+          class="mobile-link block px-3 py-3 font-display text-xl text-foreground hover:text-primary border-b border-border/50">Contact</a>
+        <div class="pt-4">
+          <button class="w-full bg-primary text-primary-foreground font-display text-xl h-12 uppercase"
+            onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">
+            Get in Touch
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow">
+    <!-- ================= HERO ================= -->
+    <section id="home"
+      class="relative h-screen min-h-[600px] md:min-h-[800px] flex flex-col justify-center pt-24 sm:pt-32 pb-20 overflow-hidden">
+      <!-- Background Image & Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=2070&auto=format&fit=crop"
+          alt="Dark premium superbike" class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/30"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <!-- Subtle biker pattern overlay -->
+        <div class="absolute inset-0 biker-pattern opacity-10 mix-blend-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+        <div class="max-w-5xl text-left">
+          <div
+            class="js-reveal opacity-0 -translate-x-5 transition-all duration-1000 ease-out flex items-center gap-3 md:gap-4 mb-6 md:mb-10"
+            data-delay="0">
+            <span class="h-[2px] w-8 md:w-12 bg-primary shadow-[0_0_15px_rgba(255,102,0,0.8)]"></span>
+            <span
+              class="text-primary font-display tracking-[0.3em] md:tracking-[0.5em] uppercase text-[10px] md:text-sm font-black text-glow">
+              Est. 2016 • Salem, TN
+            </span>
+          </div>
+
+          <h1
+            class="js-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-display font-black text-white leading-[0.85] md:leading-[0.8] mb-8 md:mb-12 uppercase tracking-tighter"
+            data-delay="200">
+            The Ultimate <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-br from-primary via-orange-400 to-yellow-500 drop-shadow-[0_10px_40px_rgba(255,102,0,0.3)]">
+              Landmark
+            </span> <br />
+            For Bikers
+          </h1>
+
+          <p class="js-reveal opacity-0 translate-y-8 transition-all duration-1000 ease-out text-xl md:text-2xl text-gray-300/90 mb-12 max-w-2xl leading-relaxed font-light tracking-wide backdrop-blur-sm bg-black/10 p-4 rounded-xl border border-white/5"
+            data-delay="400">
+            Premium Pre-Owned Superbikes • Specialist Gear & Accessories • Expert Maintenance & Tuning.
+          </p>
+
+          <div
+            class="js-reveal opacity-0 translate-y-8 transition-all duration-1000 ease-out flex flex-col sm:flex-row gap-4"
+            data-delay="600">
+            <button
+              class="inline-flex items-center justify-center clip-skew bg-primary text-primary-foreground hover:bg-primary/90 font-display text-lg sm:text-xl h-14 px-8 uppercase tracking-wider group"
+              onclick="document.getElementById('inventory').scrollIntoView({ behavior: 'smooth' })">
+              Explore Inventory
+              <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+            <button
+              class="inline-flex items-center justify-center clip-skew border-2 border-white/20 hover:border-primary hover:bg-primary/10 text-white font-display text-lg sm:text-xl h-14 px-8 uppercase tracking-wider transition-all"
+              onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">
+              Our Services
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="js-reveal opacity-0 transition-opacity duration-1000 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        data-delay="1200">
+        <span class="text-[10px] uppercase tracking-widest text-muted-foreground font-display">Scroll</span>
+        <i data-lucide="chevron-down" class="text-primary animate-bounce w-5 h-5"></i>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="py-20 sm:py-32 bg-background relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="text-center mb-12 md:mb-16">
+          <div
+            class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out flex items-center justify-center gap-3 mb-4">
+            <span class="h-0.5 w-8 bg-primary"></span>
+            <h3 class="text-primary font-display tracking-[0.2em] uppercase text-xs md:text-sm font-bold">What We Do
+            </h3>
+            <span class="h-0.5 w-8 bg-primary"></span>
+          </div>
+          <h2
+            class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white uppercase"
+            data-delay="100">
+            Premium <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-white to-muted-foreground">Services</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Service 1 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="0">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="bike"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Pre-Owned Superbikes</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  Buy, sell, or exchange premium condition superbikes with complete background verification.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Service 2 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="100">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="shopping-bag"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Spares & Accessories</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  Genuine OEM parts and high-performance aftermarket upgrades for all major brands.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Service 3 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="200">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="shield-check"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Premium Riding Gear</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  Helmets, jackets, gloves, and boots from world-renowned safety brands.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Service 4 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="300">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="wrench"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Service & Repair</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  Specialized tuning, periodic maintenance, and expert diagnostics by certified mechanics.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Service 5 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="400">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="truck"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Nationwide Shipping</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  Secure, insured transport of bikes and parts to any location across India.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Service 6 -->
+          <div class="js-reveal opacity-0 translate-y-5 transition-all duration-700 ease-out" data-delay="500">
+            <div
+              class="relative overflow-hidden bg-black/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-500 group h-full rounded-2xl shadow-xl hover:shadow-[0_0_30px_rgba(255,102,0,0.15)] hover:-translate-y-2">
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              </div>
+              <div class="p-8 flex flex-col h-full relative z-10">
+                <div
+                  class="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                  <i data-lucide="zap"
+                    class="w-8 h-8 text-gray-400 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <h3
+                  class="text-2xl font-display font-bold text-white mb-3 uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
+                  Performance Tuning</h3>
+                <p
+                  class="text-gray-400 leading-relaxed flex-grow font-light group-hover:text-gray-300 transition-colors duration-300">
+                  ECU remaps, exhaust systems, and dyno-tested performance enhancements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INVENTORY ================= -->
+    <section id="inventory" class="py-20 sm:py-32 bg-zinc-950 relative border-t border-b border-white/5">
+      <div class="absolute top-0 right-0 w-1/2 h-full biker-pattern opacity-5 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
+          <div>
+            <div
+              class="js-reveal opacity-0 -translate-x-5 transition-all duration-700 ease-out flex items-center gap-3 mb-4">
+              <span class="h-0.5 w-8 bg-primary"></span>
+              <h3 class="text-primary font-display tracking-[0.2em] uppercase text-xs md:text-sm font-bold">Showcase
+              </h3>
+            </div>
+            <h2
+              class="js-reveal opacity-0 -translate-x-5 transition-all duration-700 ease-out text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white uppercase"
+              data-delay="100">
+              Inventory <span class="text-muted-foreground">Highlights</span>
+            </h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Item 1 -->
+          <div class="js-reveal opacity-0 scale-95 translate-y-8 transition-all duration-700 ease-out" data-delay="0">
+            <div
+              class="group relative overflow-hidden bg-black/40 backdrop-blur-sm border border-white/10 rounded-3xl shadow-2xl hover:shadow-[0_0_40px_rgba(255,102,0,0.15)] transition-all duration-500">
+              <div class="absolute top-4 left-4 z-20">
+                <span
+                  class="bg-gradient-to-r from-primary to-orange-500 text-white font-display px-4 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(255,102,0,0.5)]">
+                  Just Arrived
+                </span>
+              </div>
+              <div class="aspect-[16/10] overflow-hidden relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent z-10"></div>
+                <div
+                  class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay">
+                </div>
+                <!-- Image here: Honda CBR1000RR Fireblade -->
+                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=2070&auto=format&fit=crop"
+                  alt="Honda CBR1000RR Fireblade"
+                  class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1" />
+              </div>
+              <div class="p-6 md:p-8 relative z-20 -mt-20 md:-mt-24">
+                <h4
+                  class="text-primary font-display text-[10px] md:text-xs tracking-[0.2em] uppercase mb-2 md:mb-3 font-semibold drop-shadow-md">
+                  Superbike</h4>
+                <h3
+                  class="text-2xl sm:text-3xl md:text-4xl font-display font-black text-white uppercase tracking-tight mb-6 md:mb-8 drop-shadow-lg group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-300">
+                  Honda CBR1000RR Fireblade
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="cog"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">1000cc
+                      Inline-Four</span>
+                  </div>
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="gauge"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">189
+                      HP</span>
+                  </div>
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="calendar"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span
+                      class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">Immaculate
+                      Condition</span>
+                  </div>
+                </div>
+                <button
+                  onclick="window.open('https://wa.me/919677711992?text=' + encodeURIComponent('Hi, I\'m interested in the Honda CBR1000RR Fireblade (Superbike).'), '_blank')"
+                  class="w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#25D366] to-[#1da851] hover:from-[#20ba56] hover:to-[#178f43] text-white font-display text-lg tracking-widest uppercase h-14 shadow-[0_0_20px_rgba(37,211,102,0.3)] hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] hover:-translate-y-1 transition-all duration-300">
+                  Inquire on WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="js-reveal opacity-0 scale-95 translate-y-8 transition-all duration-700 ease-out" data-delay="200">
+            <div
+              class="group relative overflow-hidden bg-black/40 backdrop-blur-sm border border-white/10 rounded-3xl shadow-2xl hover:shadow-[0_0_40px_rgba(255,102,0,0.15)] transition-all duration-500">
+              <div class="absolute top-4 left-4 z-20">
+                <span
+                  class="bg-gradient-to-r from-primary to-orange-500 text-white font-display px-4 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(255,102,0,0.5)]">
+                  Featured Gear
+                </span>
+              </div>
+              <div class="aspect-[16/10] overflow-hidden relative">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent z-10"></div>
+                <div
+                  class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 mix-blend-overlay">
+                </div>
+                <!-- Image here: Kawasaki Z900 -->
+                <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?q=80&w=2069&auto=format&fit=crop"
+                  alt="Kawasaki Z900 2026 Edition"
+                  class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1" />
+              </div>
+              <div class="p-6 md:p-8 relative z-20 -mt-20 md:-mt-24">
+                <h4
+                  class="text-primary font-display text-[10px] md:text-xs tracking-[0.2em] uppercase mb-2 md:mb-3 font-semibold drop-shadow-md">
+                  Accessories & Upgrades</h4>
+                <h3
+                  class="text-2xl sm:text-3xl md:text-4xl font-display font-black text-white uppercase tracking-tight mb-6 md:mb-8 drop-shadow-lg group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-300">
+                  Kawasaki Z900 2026 Edition
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="cog"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">Full
+                      System Exhausts</span>
+                  </div>
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="gauge"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">Carbon
+                      Fiber Panels</span>
+                  </div>
+                  <div
+                    class="flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-left sm:text-center group-hover:bg-white/10 transition-colors duration-300 gap-3 sm:gap-0">
+                    <i data-lucide="calendar"
+                      class="text-orange-400 mb-0 sm:mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span
+                      class="text-[10px] sm:text-[11px] text-gray-300 font-medium tracking-wide uppercase">Performance
+                      ECU</span>
+                  </div>
+                </div>
+                <button
+                  onclick="window.open('https://wa.me/919677711992?text=' + encodeURIComponent('Hi, I\'m interested in the Kawasaki Z900 2026 Edition (Accessories & Upgrades).'), '_blank')"
+                  class="w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#25D366] to-[#1da851] hover:from-[#20ba56] hover:to-[#178f43] text-white font-display text-lg tracking-widest uppercase h-14 shadow-[0_0_20px_rgba(37,211,102,0.3)] hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] hover:-translate-y-1 transition-all duration-300">
+                  Inquire on WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="py-20 sm:py-32 bg-background relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+
+          <!-- Contact Info -->
+          <div class="js-reveal opacity-0 -translate-x-8 transition-all duration-700 ease-out" data-delay="0">
+            <div class="mb-10">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="h-0.5 w-8 bg-primary"></span>
+                <h3 class="text-primary font-display tracking-[0.2em] uppercase text-xs md:text-sm font-bold">Get In
+                  Touch</h3>
+              </div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white uppercase mb-6">
+                Visit <span class="text-muted-foreground">The Cafe</span>
+              </h2>
+              <p class="text-muted-foreground text-base md:text-lg leading-relaxed max-w-md">
+                Drop by to explore our latest collection, get your bike serviced, or simply talk motorcycles.
+              </p>
+            </div>
+
+            <!-- Google Rating -->
+            <div
+              class="flex items-center gap-5 bg-black/40 backdrop-blur-md p-5 sm:p-6 border border-white/10 rounded-2xl mb-10 max-w-sm shadow-xl hover:shadow-[0_0_20px_rgba(255,102,0,0.15)] transition-shadow duration-300">
+              <div
+                class="flex flex-col items-center justify-center bg-gradient-to-br from-primary to-orange-500 text-white p-2 sm:p-3 rounded-xl w-14 h-14 sm:w-16 sm:h-16 shadow-[0_0_15px_rgba(255,102,0,0.5)]">
+                <span class="font-display text-xl sm:text-2xl font-black">3.8</span>
+                <i data-lucide="star" class="w-3 h-3 sm:w-4 sm:h-4 fill-current drop-shadow-md"></i>
+              </div>
+              <div>
+                <h4 class="font-display text-lg sm:text-xl text-white uppercase tracking-wide">Google Rating</h4>
+                <p class="text-gray-400 text-xs sm:text-sm font-medium">Based on 636 reviews</p>
+              </div>
+            </div>
+
+            <div class="space-y-6 sm:space-y-8">
+              <div class="flex items-start gap-4 sm:gap-5 group">
+                <div
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300 shadow-inner">
+                  <i data-lucide="map-pin"
+                    class="text-gray-400 group-hover:text-primary transition-colors duration-300 w-[22px] h-[22px] sm:w-[26px] sm:h-[26px]"></i>
+                </div>
+                <div>
+                  <h4
+                    class="font-display text-lg sm:text-xl text-white uppercase tracking-wide mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
+                    Location</h4>
+                  <p class="text-gray-400 text-sm sm:text-base font-light leading-relaxed">Anna Salai Road,
+                    Swarnapuri<br />Salem, Tamil Nadu 636004</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 sm:gap-5 group">
+                <div
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300 shadow-inner">
+                  <i data-lucide="phone"
+                    class="text-gray-400 group-hover:text-primary transition-colors duration-300 w-[22px] h-[22px] sm:w-[26px] sm:h-[26px]"></i>
+                </div>
+                <div>
+                  <h4
+                    class="font-display text-lg sm:text-xl text-white uppercase tracking-wide mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
+                    Call Us</h4>
+                  <p class="text-gray-400 text-sm sm:text-base font-light leading-relaxed">+91 96777 11992<br />+91
+                    70105 71262</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 sm:gap-5 group">
+                <div
+                  class="w-12 h-12 sm:w-14 sm:h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300 shadow-inner">
+                  <i data-lucide="clock"
+                    class="text-gray-400 group-hover:text-primary transition-colors duration-300 w-[22px] h-[22px] sm:w-[26px] sm:h-[26px]"></i>
+                </div>
+                <div>
+                  <h4
+                    class="font-display text-lg sm:text-xl text-white uppercase tracking-wide mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-300">
+                    Hours</h4>
+                  <p class="text-gray-400 text-sm sm:text-base font-light leading-relaxed">Mon - Sat: 10:00 AM - 8:00
+                    PM<br />Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div
+            class="js-reveal opacity-0 translate-x-8 transition-all duration-700 ease-out bg-black/40 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-12 relative shadow-2xl overflow-hidden group"
+            data-delay="0">
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none transition-opacity duration-700 opacity-50 group-hover:opacity-100">
+            </div>
+            <div
+              class="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none transition-opacity duration-700 opacity-50 group-hover:opacity-100">
+            </div>
+
+            <h3 class="text-3xl font-display font-black text-white uppercase mb-8 tracking-tight drop-shadow-md">Connect
+              on <span class="text-[#25D366]">WhatsApp</span></h3>
+
+            <form id="contact-form" class="space-y-6 relative z-10">
+              <div class="space-y-2">
+                <label for="name" class="text-gray-300 font-semibold uppercase text-xs tracking-widest block">Full
+                  Name</label>
+                <input id="name" type="text" placeholder="John Doe" required
+                  class="flex w-full bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary h-14 px-3 rounded-xl shadow-inner transition-all duration-300" />
+              </div>
+
+              <div class="space-y-2">
+                <label for="phone" class="text-gray-300 font-semibold uppercase text-xs tracking-widest block">Phone
+                  Number</label>
+                <input id="phone" type="tel" placeholder="+91" required
+                  class="flex w-full bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary h-14 px-3 rounded-xl shadow-inner transition-all duration-300" />
+              </div>
+
+              <div class="space-y-2">
+                <label for="message"
+                  class="text-gray-300 font-semibold uppercase text-xs tracking-widest block">Message</label>
+                <textarea id="message" placeholder="I'm looking for a Kawasaki Z900..." required
+                  class="flex w-full bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary min-h-[140px] px-3 py-2 rounded-xl resize-none shadow-inner transition-all duration-300"></textarea>
+              </div>
+
+              <button type="submit"
+                class="inline-flex w-full justify-center items-center rounded-xl bg-gradient-to-r from-[#25D366] to-[#1da851] hover:from-[#20ba56] hover:to-[#178f43] text-white font-display text-xl tracking-widest uppercase h-16 shadow-[0_0_20px_rgba(37,211,102,0.3)] hover:shadow-[0_0_30px_rgba(37,211,102,0.5)] hover:-translate-y-1 transition-all duration-300 mt-6 cursor-pointer">
+                Send via WhatsApp
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-zinc-950 border-t border-border pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <!-- Brand Info -->
+        <div>
+          <div class="flex items-center gap-2 mb-6">
+            <div
+              class="w-8 h-8 bg-primary clip-skew flex items-center justify-center text-primary-foreground font-display font-bold text-lg">
+              BC</div>
+            <span class="font-display font-bold text-2xl tracking-wide text-white">BIKERS CAFE</span>
+          </div>
+          <p class="text-muted-foreground leading-relaxed mb-6">
+            The ultimate landmark for bikers since 2016. Salem's premier destination for pre-owned superbikes, premium
+            gear, and expert service.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors clip-skew">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors clip-skew">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-display text-xl text-white mb-6 uppercase tracking-wider">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="#services" class="text-muted-foreground hover:text-primary transition-colors">Our Services</a>
+            </li>
+            <li><a href="#inventory" class="text-muted-foreground hover:text-primary transition-colors">Current
+                Inventory</a></li>
+            <li><a href="#contact" class="text-muted-foreground hover:text-primary transition-colors">Contact Us</a>
+            </li>
+            <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Terms & Conditions</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-display text-xl text-white mb-6 uppercase tracking-wider">Visit Us</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-muted-foreground">
+              <i data-lucide="map-pin" class="text-primary shrink-0 mt-1 w-5 h-5"></i>
+              <span>Anna Salai Road, Swarnapuri<br />Salem, Tamil Nadu 636004</span>
+            </li>
+            <li class="flex items-center gap-3 text-muted-foreground">
+              <i data-lucide="phone" class="text-primary shrink-0 w-5 h-5"></i>
+              <span>+91 96777 11992<br />+91 70105 71262</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-muted-foreground text-sm">
+          &copy; <span id="current-year"></span> Bikers Cafe Salem. All rights reserved.
+        </p>
+        <div class="flex items-center gap-2 text-sm text-muted-foreground">
+          <span class="font-display text-primary">EST. 2016</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
